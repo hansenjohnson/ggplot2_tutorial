@@ -1,0 +1,43 @@
+# Conclusions
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message = FALSE)
+```
+
+## Extensions
+
+Many enterprising people have written additional packages that build upon **ggplot2**. Here are a few I think are worth checking out:
+
+### plotly
+**plotly** provides an amazingly convenient way to convert **ggplot2** objects to interactive plots using the `ggplotly()` function. Here's a very quick example
+
+```{r}
+library(plotly)
+ggplotly(p_bar)
+```
+
+### gganimate
+
+**gganimate** allows you to convert **ggplot2** objects into animations in just a few lines of code. I wrote a [post](https://hansenjohnson.org/post/animate-movement-in-r/) awhile back showing how this can be applied to ocean drifter data.
+
+## Recommendations
+
+1. Do any and all calculations *outside* of **ggplot2**
+
+There are many options to have **ggplot2** do a lot of data maniupulation and processing 'under the hood'. Examples can be anything from generating histograms to fitting linear models to smoothing raster maps. Where possible, I strongly recommend doing these calculations outside of ggplot so that you know exactly what's going on. You also will likely see a performance increase for data-heavy plots.
+
+2. Always change default colormaps
+
+Unfortunately most of the default colormaps are not color-blind friendly. I recommend using viridis colormaps for continuous variables, and manually-specifying discrete variable colors using guidance from colorbrewer2 (<https://colorbrewer2.org/>) 
+
+3. Have a separate R script for each figure
+
+I cannot recommend this strongly enough. You will inevitably need to tweak the formatting of plots again, and again, and again. Having one plot in one script allows you to do this without needing to constantly re-process your data or re-plot other figures. I use the naming convention `f_*.R` to identify scripts that produce figures, which I have found incredibly helpful for staying organized.
+
+## Getting help
+
+One of the other reasons for using ggplot2 is the immense amount of help available online. You will find wonderful documentation on the tidyverse web page (<https://tidyverse.org/>), ggplot2 book (<https://ggplot2-book.org/>), and on various forums (like stackoverflow) and blogs.
+
+## The end
+
+Happy plotting :)

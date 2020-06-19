@@ -1,0 +1,79 @@
+# Introduction {#intro}
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message = FALSE)
+```
+
+## What is **ggplot2**?
+
+The "gg" in **ggplot2** is short for "Grammar of Graphics" (Wilkinson 2005), which defines a common grammar for all data visualizations.
+
+What is this grammar?
+
+> In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system. Facetting can be used to generate the same plot for different subsets of the dataset. It is the combination of these independent components that make up a graphic [@ggplot22016].
+
+**ggplot2** was built on this concept, providing an elegant means of combining each of these elements to create virtually any statistical graphic imaginable.
+
+Other plotting libraries typically rely on pre-specified functions to plot data in a specific way. This is useful in certain applications, but can become extremely limiting when trying to visualize data in unconventional ways.
+
+It takes time to understand and appreciate the **ggplot2** approach, but once you master the grammar it is as liberating as learning a new language. The 3 key components of every plot are:
+
+1. Data (`data = `)
+2. Aesthetics (`aes()`)  
+3. Geometries (`geom_*()`)    
+
+Let's go into each in a little more detail...
+
+## Data
+
+Input data for ggplot2 must be *tidy*.
+
+Tidy data means:
+
+1. Each variable must have its own column  
+2. Each observation must have its own row  
+3. Each value must have its own cell  
+
+In practice that means you should:
+
+1. Put each dataset in a data frame (or tibble)  
+2. Put each variable in a column  
+
+**ggplot2** is part of an ecosystem of packages called the **tidyverse**, which provide common (amazing) tools for working with "tidy" data. For more information on the **tidyverse** or this approach see the **tidyverse** website (<https://www.tidyverse.org/>) or *R for Data Science book* (<https://r4ds.had.co.nz/>)
+
+## Aesthetics
+
+This is maybe the most confusing part of the **ggplot2** grammar. *Aesthetics* refer to mapped relationship between variables in the data and the visual properties of the plot.
+
+Aesthetic properties of plots include the following:
+
+**x**  
+**y**  
+**color**    
+**fill**  
+**size**  
+**shape**  
+**linetype**  
+**label**  
+**alpha**
+
+This mapping is achieved using the `mapping = aes()` argument within either the `ggplot()` function, or within geometry function (`geom_*()`; more on these next). This will hopefully make more sense once we start moving through some hands-on examples.
+
+## Geometries
+
+The data and aesthetic mapping are then used to plot the data using a given *geometry*. Examples of geometries include: 
+
+**point**  
+**bar**  
+**line**  
+**path**  
+**ribbon**  
+**contour**  
+**raster**  
+**polygon**  
+**segment**  
+**label**  
+**area**  
+(and more...)
+
+Each geometry is called using a function with the `geom_` prefix. For example, points are created with `geom_point()`, paths with `geom_path()`, etc. Each geometry has a specific set of required aesthetics. These are all easily available in the function documentation (use `?geom_path()` to see the documentation for `geom_path()`.

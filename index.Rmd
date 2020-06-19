@@ -1,0 +1,28 @@
+--- 
+title: "ggplot2 for ocean data"
+author: "Hansen Johnson"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "A short overview and guide to plotting common ocean data using ggplot2."
+---
+
+# Preface
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message = FALSE)
+
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown','ggplot2','dplyr','oce'), 'packages.bib')
+```
+
+Almost none of the ideas here are my own. Most of it is paraphrased from
+the wonderful **ggplot2** book [@ggplot22016].
+
+The content of the example plots caters to ocean science applications, but hopefully the concepts are universal.
+
+This tutorial was written using **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Getting started | ggplot2 for ocean data</title>
+  <meta name="description" content="A short overview and guide to plotting common ocean data using ggplot2." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Getting started | ggplot2 for ocean data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A short overview and guide to plotting common ocean data using ggplot2." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Getting started | ggplot2 for ocean data" />
+  
+  <meta name="twitter:description" content="A short overview and guide to plotting common ocean data using ggplot2." />
+  
+
+<meta name="author" content="Hansen Johnson" />
+
+
+<meta name="date" content="2020-06-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="examples.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ggplot2 for ocean data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#what-is-ggplot2"><i class="fa fa-check"></i><b>2.1</b> What is <strong>ggplot2</strong>?</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#data"><i class="fa fa-check"></i><b>2.2</b> Data</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#aesthetics"><i class="fa fa-check"></i><b>2.3</b> Aesthetics</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#geometries"><i class="fa fa-check"></i><b>2.4</b> Geometries</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting started</a><ul>
+<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#plotting"><i class="fa fa-check"></i><b>3.1</b> Plotting</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#formatting"><i class="fa fa-check"></i><b>3.2</b> Formatting</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="getting-started.html"><a href="getting-started.html#labels"><i class="fa fa-check"></i><b>3.2.1</b> Labels</a></li>
+<li class="chapter" data-level="3.2.2" data-path="getting-started.html"><a href="getting-started.html#scales"><i class="fa fa-check"></i><b>3.2.2</b> Scales</a></li>
+<li class="chapter" data-level="3.2.3" data-path="getting-started.html"><a href="getting-started.html#theme"><i class="fa fa-check"></i><b>3.2.3</b> Theme</a></li>
+<li class="chapter" data-level="3.2.4" data-path="getting-started.html"><a href="getting-started.html#putting-it-all-together"><i class="fa fa-check"></i><b>3.2.4</b> Putting it all together</a></li>
+<li class="chapter" data-level="3.2.5" data-path="getting-started.html"><a href="getting-started.html#saving"><i class="fa fa-check"></i><b>3.2.5</b> Saving</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>4</b> Examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="examples.html"><a href="examples.html#bar-plot"><i class="fa fa-check"></i><b>4.1</b> Bar plot</a></li>
+<li class="chapter" data-level="4.2" data-path="examples.html"><a href="examples.html#line-plot"><i class="fa fa-check"></i><b>4.2</b> Line plot</a></li>
+<li class="chapter" data-level="4.3" data-path="examples.html"><a href="examples.html#box-plot"><i class="fa fa-check"></i><b>4.3</b> Box plot</a></li>
+<li class="chapter" data-level="4.4" data-path="examples.html"><a href="examples.html#scatter-plot"><i class="fa fa-check"></i><b>4.4</b> Scatter plot</a></li>
+<li class="chapter" data-level="4.5" data-path="examples.html"><a href="examples.html#profiles"><i class="fa fa-check"></i><b>4.5</b> Profiles</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="examples.html"><a href="examples.html#temperature-profiles"><i class="fa fa-check"></i><b>4.5.1</b> Temperature profiles</a></li>
+<li class="chapter" data-level="4.5.2" data-path="examples.html"><a href="examples.html#timeseries"><i class="fa fa-check"></i><b>4.5.2</b> Timeseries</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="examples.html"><a href="examples.html#map"><i class="fa fa-check"></i><b>4.6</b> Map</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>5</b> Conclusions</a><ul>
+<li class="chapter" data-level="5.1" data-path="conclusions.html"><a href="conclusions.html#extensions"><i class="fa fa-check"></i><b>5.1</b> Extensions</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="conclusions.html"><a href="conclusions.html#plotly"><i class="fa fa-check"></i><b>5.1.1</b> plotly</a></li>
+<li class="chapter" data-level="5.1.2" data-path="conclusions.html"><a href="conclusions.html#gganimate"><i class="fa fa-check"></i><b>5.1.2</b> gganimate</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="conclusions.html"><a href="conclusions.html#recommendations"><i class="fa fa-check"></i><b>5.2</b> Recommendations</a></li>
+<li class="chapter" data-level="5.3" data-path="conclusions.html"><a href="conclusions.html#getting-help"><i class="fa fa-check"></i><b>5.3</b> Getting help</a></li>
+<li class="chapter" data-level="5.4" data-path="conclusions.html"><a href="conclusions.html#the-end"><i class="fa fa-check"></i><b>5.4</b> The end</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggplot2 for ocean data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Getting started</h1>
+<p>Load the <strong>ggplot2</strong> library and read in the example dataset we’ll be using for most of these plots. This is a timeseries of detections of different whale species collected by an ocean glider off southern Nova Scotia, Canada, in the fall of 2017.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># the ggplot library</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># the dplyr library (for occasional data manipulation)</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># daily counts of whale daily detections</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">df =<span class="st"> </span><span class="kw">readRDS</span>(<span class="kw">url</span>(<span class="st">&#39;https://hansenjohnson.org/files/data/detections_daily.rds&#39;</span>))</a></code></pre></div>
+<div id="plotting" class="section level2">
+<h2><span class="header-section-number">3.1</span> Plotting</h2>
+<p>Let’s make a bar plot of how the number of detections per day (<code>n</code>) changed over time (<code>date</code>). We’ll specify that we’re going to use <code>df</code> as our input data, that the variable <code>date</code> should be mapped to the x axis and the variable <code>n</code> should be mapped to the y axis, and that we’d like to use a column (<code>col</code>) geometry. Here’s how to do that:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>date,<span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>There are a few things to note here:</p>
+<ul>
+<li>every ggplot2 plot must start with the <code>ggplot()</code> function<br />
+</li>
+<li>the <code>+</code> is used to connect multiple functions associated with the given plot<br />
+</li>
+<li>the <code>data =</code> argument is used to refer to the input table<br />
+</li>
+<li>the <code>mapping =</code> argument is used to refer to the mapping aesthetics, which are specified using the <code>aes()</code> function<br />
+</li>
+<li>the geometry is specified using the <code>geom_col()</code> function.</li>
+</ul>
+<p>You will also see this written as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>date,<span class="dt">y=</span>n))</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>This produces identical results. I prefer using this method because it makes things easier down the road when things get more complicated and you’re using multiple geometries to map different aesthetics from different datasets.</p>
+<p>Now let’s get a little more sophisticated and add use some color to distinguish between different species (<code>species</code>). That is as easy as setting the <code>fill=species</code> within the aesthetics mapping (<code>aes()</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>date,<span class="dt">y=</span>n,<span class="dt">fill=</span>species))</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<blockquote>
+<p><strong>Note</strong> - the default ggplot colors are <strong>NOT</strong> colorblind friendly!</p>
+</blockquote>
+<p>Aesthetics that are specified outside of <code>aes()</code> are applied to that geometry, but not mapped to the data. Here <code>color = 'black'</code> will make the border of all bars black, regardless of the mapping between aesthetics and data.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>date,<span class="dt">y=</span>n,<span class="dt">fill=</span>species), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>)</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>The output of a <code>ggplot()</code> function can be stored as a variable, which can be further altered, plotted, or saved later on.</p>
+<p>Let’s build the plot again, but store it as <code>p</code> instead of plotting it</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>date,<span class="dt">y=</span>n,<span class="dt">fill=</span>species), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>)</a></code></pre></div>
+<p>And now we can plot it by simply printing the variable p</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">p</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="formatting" class="section level2">
+<h2><span class="header-section-number">3.2</span> Formatting</h2>
+<p>The default formatting options have been carefully chosen so that plots produced by ggplot2 tend to look pretty good right out of the box. Let’s go through some simple, common formatting tweaks.</p>
+<div id="labels" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Labels</h3>
+<p>Updating labels is easy. There are a number of ways to do it. I prefer to use the <code>labs()</code> function and specify the new label you would like to be associated with each aesthetic. I’ll use <code>NULL</code> when I don’t want a label to appear</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">         <span class="dt">y =</span> <span class="st">&#39;Detections per day&#39;</span>, </a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">         <span class="dt">fill =</span> <span class="st">&#39;Species&#39;</span>)</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Note how I split each label onto a new line. This is optional but makes the code more readible.</p>
+</div>
+<div id="scales" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Scales</h3>
+<p>It’s common to want to change the scales in some way. This is achieved using a suite of functions with the following naming convention <code>scale_[aesthetic]_*()</code>. I often do this to update the axis limits or change the default color scheme (I really don’t like the default ggplot2 colors!)</p>
+<p>Here’s how to change the y axis limits and break points. I also often use the <code>expand = c(0,0)</code> arugment to remove the margins at the top and bottom of the plot area.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">p <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>), <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">5</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Here’s how to change the color map. I recommend setting the values by hand for discrete variables, and using a viridis colormap for continuous variables. Here’s a convenient way to map color values by hand using a named list.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">p <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&#39;fin&#39;</span> =<span class="st"> &#39;grey&#39;</span>, </a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">                                 <span class="st">&#39;humpback&#39;</span> =<span class="st"> &#39;blue&#39;</span>, </a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">                                 <span class="st">&#39;right&#39;</span> =<span class="st"> &#39;red&#39;</span>, </a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">                                 <span class="st">&#39;sei&#39;</span> =<span class="st"> &#39;white&#39;</span>))</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>And finally, here’s how to change the time resolution on the x axis.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">p <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">&#39;3 day&#39;</span>, <span class="dt">date_labels =</span> <span class="st">&#39;%b %d&#39;</span>)</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="theme" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Theme</h3>
+<p>The overall look and feel of a plot are specified by the <code>theme()</code> function. There are also numerous default themes that can be called as follows:</p>
+<ul>
+<li><code>theme_bw()</code><br />
+</li>
+<li><code>theme_classic()</code><br />
+</li>
+<li><code>theme_minimal()</code><br />
+</li>
+<li><code>theme_void()</code><br />
+</li>
+<li><code>theme_dark()</code></li>
+</ul>
+<p>Here’s how our original plot looks with the <code>theme_bw()</code> theme applied</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">p<span class="op">+</span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>You can also use arguments within the generic <code>theme()</code> function to change <em>literally</em> everything about how a plot looks. Here’s a quick example of how to turn the gridlines off:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">p<span class="op">+</span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="putting-it-all-together" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Putting it all together</h3>
+<p>Let’s build a nicely formatted plot from scratch</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># start ggplot</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">p_bar =<span class="st"> </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="co"># specify geometry, data, and aesthetic mapping</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>date,<span class="dt">y=</span>n,<span class="dt">fill=</span>species), <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="st">  </span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="st">  </span><span class="co"># define fill colors to use for each species</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&#39;fin&#39;</span> =<span class="st"> &#39;grey&#39;</span>, </a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">                               <span class="st">&#39;humpback&#39;</span> =<span class="st"> &#39;blue&#39;</span>, </a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">                               <span class="st">&#39;right&#39;</span> =<span class="st"> &#39;red&#39;</span>, </a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">                               <span class="st">&#39;sei&#39;</span> =<span class="st"> &#39;white&#39;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="co"># update the y axis limits and break points</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>), <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">5</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="st">  </span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="st">  </span><span class="co"># update x axis for more regular date breaks</span></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">&#39;3 day&#39;</span>, <span class="dt">date_labels =</span> <span class="st">&#39;%b %d&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="st">  </span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="st">  </span><span class="co"># write nice labels</span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">&#39;Detections per day&#39;</span>, <span class="dt">fill =</span> <span class="st">&#39;Species&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="st">  </span></a>
+<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="st">  </span><span class="kw">theme_classic</span>()</a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co"># print plot  </span></a>
+<a class="sourceLine" id="cb14-25" data-line-number="25">p_bar</a></code></pre></div>
+<p><img src="ggplot2_tutorial_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="saving" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> Saving</h3>
+<p>Saving a plot in <strong>ggplot2</strong> is done using the <code>ggsave()</code> function. Here’s how I’d do that with the example plot:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&#39;bar.png&#39;</span>, <span class="dt">plot =</span> p_bar, </a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">       <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>, <span class="dt">units =</span> <span class="st">&#39;in&#39;</span>, <span class="dt">dpi =</span> <span class="dv">300</span>)</a></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="examples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ggplot2_tutorial.pdf", "ggplot2_tutorial.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
